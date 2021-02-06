@@ -1,0 +1,78 @@
+{
+    "name": "tomudding/gewisweb-laravel",
+    "type": "project",
+    "description": "GEWIS Website with Laravel Framework.",
+    "homepage": "https://gewis.nl/",
+    "keywords": [
+        "website",
+        "gewis",
+        "laravel"
+    ],
+    "license": "GPL-3.0",
+    "require": {
+        "php": "^8.0",
+        "fideloper/proxy": "^4.4",
+        "fortawesome/font-awesome": "^5.15",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel-doctrine/orm": "^1.7",
+        "laravel/framework": "^8.12",
+        "laravel/tinker": "^2.5",
+        "nwidart/laravel-modules": "^8.2",
+        "slowprog/composer-copy-file": "^0.3.3"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "copy-file": {
+            "vendor/fortawesome/font-awesome/scss/": "resources/scss/fontawesome/",
+            "vendor/fortawesome/font-awesome/webfonts/": "resources/fonts/fontawesome/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Modules\\": "Modules/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-install-cmd": [
+            "SlowProg\\CopyFile\\ScriptHandler::copy"
+        ],
+        "post-update-cmd": [
+            "SlowProg\\CopyFile\\ScriptHandler::copy"
+        ]
+    }
+}
