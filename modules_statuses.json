@@ -1,4 +1,6 @@
 {
     "Application": true,
-    "Test": true
+    "Test": true,
+    "User": true,
+    "Decision": true
 }

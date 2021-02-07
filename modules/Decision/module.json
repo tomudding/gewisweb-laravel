@@ -1,0 +1,13 @@
+{
+    "name": "Decision",
+    "alias": "decision",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Decision\\Providers\\DecisionServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
